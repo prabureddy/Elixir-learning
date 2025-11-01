@@ -19,9 +19,19 @@ defmodule Example do
 
   """
   def main do
-    time = Time.new!(16, 30, 0, 0)
-    date = Date.new!(2025, 11, 1)
-    dateTime = DateTime.new!(date, time, "Etc/UTC")
-    IO.inspect(dateTime)
+    date_time = DateTime.new!(Date.new!(2025, 10, 1), Time.new!(16, 35, 0, 0), "Etc/UTC")
+    current_date_time = DateTime.utc_now()
+    current_date_time_diff = DateTime.diff(current_date_time, date_time)
+    IO.puts("Total Seconds" <> " = " <> Integer.to_string(current_date_time_diff))
+    seconds_in_days = 86_400
+    seconds_in_hours = 3_600
+    seconds_in_minutes = 60
+    days = div(current_date_time_diff, seconds_in_days)
+    remaining_seconds = rem(current_date_time_diff, seconds_in_days)
+    hours = div(remaining_seconds, seconds_in_hours)
+    remaining_seconds = rem(remaining_seconds, seconds_in_hours)
+    minutes = div(remaining_seconds, seconds_in_minutes)
+    remaining_seconds = rem(remaining_seconds, seconds_in_minutes)
+    IO.puts(Integer.to_string(days) <> " " <> "days" <> " " <> Integer.to_string(hours) <> " " <> "hours" <> " " <> Integer.to_string(minutes) <> " " <> "minutes" <> " " <> Integer.to_string(remaining_seconds) <> " " <> "seconds")
   end
 end
