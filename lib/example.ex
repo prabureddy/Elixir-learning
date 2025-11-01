@@ -3,8 +3,10 @@ defmodule Example do
   Documentation for `Example`.
   """
 
+  alias UUID
+
   def start(_type, _args) do
-    IO.puts(Example.hello())
+    IO.puts(UUID.uuid4())
     Supervisor.start_link([], strategy: :one_for_one)
   end
 
