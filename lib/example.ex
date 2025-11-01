@@ -3,6 +3,11 @@ defmodule Example do
   Documentation for `Example`.
   """
 
+  def start(_type, _args) do
+    IO.puts(Example.hello())
+    Supervisor.start_link([], strategy: :one_for_one)
+  end
+
   @doc """
   Hello world.
 
@@ -13,6 +18,6 @@ defmodule Example do
 
   """
   def hello do
-    IO.puts(:world)
+    :world
   end
 end
