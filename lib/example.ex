@@ -19,12 +19,9 @@ defmodule Example do
 
   """
   def main do
-    name = "Prabu"
-    status = Enum.random([:silver, :gold, :platinum])
-    if status === :gold or status === :platinum do
-      IO.puts("Welcome back, #{name}! As a #{status} member, you have access to exclusive features.")
-    else
-      IO.puts("Welcome back, #{name}!")
-    end
+    time = Time.new!(16, 30, 0, 0)
+    date = Date.new!(2025, 11, 1)
+    dateTime = DateTime.new!(date, time, "Etc/UTC")
+    IO.inspect(dateTime)
   end
 end
