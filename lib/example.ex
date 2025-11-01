@@ -2,11 +2,10 @@ defmodule Example do
   @moduledoc """
   Documentation for `Example`.
   """
-
-  alias UUID
+  use Application
 
   def start(_type, _args) do
-    IO.puts(UUID.uuid4())
+    Example.main()
     Supervisor.start_link([], strategy: :one_for_one)
   end
 
@@ -19,7 +18,13 @@ defmodule Example do
       :world
 
   """
-  def hello do
-    :world
+  def main do
+    name = "Prabu"
+    status = Enum.random([:silver, :gold, :platinum])
+    if status === :gold or status === :platinum do
+      IO.puts("Welcome back, #{name}! As a #{status} member, you have access to exclusive features.")
+    else
+      IO.puts("Welcome back, #{name}!")
+    end
   end
 end
