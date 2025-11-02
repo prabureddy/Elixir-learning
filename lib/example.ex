@@ -54,27 +54,34 @@ defmodule Example do
     #     " " <> "minutes" <> " " <> Integer.to_string(remaining_seconds) <> " " <> "seconds"
     # )
 
-    memberships = {:bronze, :silver, :gold}
-    prices = {5, 10, 15}
-    avg = Tuple.sum(prices) / tuple_size(prices)
+    # memberships = {:bronze, :silver, :gold}
+    # prices = {5, 10, 15}
+    # avg = Tuple.sum(prices) / tuple_size(prices)
 
-    IO.puts(
-      "Average price of #{elem(memberships, 0)}, #{elem(memberships, 1)}, #{elem(memberships, 2)} is #{avg}"
-    )
+    # IO.puts(
+    #   "Average price of #{elem(memberships, 0)}, #{elem(memberships, 1)}, #{elem(memberships, 2)} is #{avg}"
+    # )
 
-    platinum_membership = %Membership{type: :platinum, price: 100}
-    gold_membership = %Membership{type: :gold, price: 90}
-    silver_membership = %Membership{type: :silver, price: 80}
-    # none_membership = %Membership{type: :none, price: 0}
+    # platinum_membership = %Membership{type: :platinum, price: 100}
+    # gold_membership = %Membership{type: :gold, price: 90}
+    # silver_membership = %Membership{type: :silver, price: 80}
+    # # none_membership = %Membership{type: :none, price: 0}
 
-    users = [
-      %User{name: "Moses", membership: platinum_membership},
-      %User{name: "Joshua", membership: gold_membership},
-      %User{name: "Caleb", membership: silver_membership}
-    ]
+    # users = [
+    #   %User{name: "Moses", membership: platinum_membership},
+    #   %User{name: "Joshua", membership: gold_membership},
+    #   %User{name: "Caleb", membership: silver_membership}
+    # ]
 
-    Enum.each(users, fn %User{name: name, membership: membership} ->
-      IO.puts("#{name} has a #{membership.type} membership paying #{membership.price}$")
-    end)
+    # Enum.each(users, fn %User{name: name, membership: membership} ->
+    #   IO.puts("#{name} has a #{membership.type} membership paying #{membership.price}$")
+    # end)
+    correct = :rand.uniform(10) - 1
+    guess = IO.gets("Enter your guess from 0 to 10: ") |> String.trim() |> String.to_integer()
+    if guess == correct do
+      IO.puts("Congratulations! You guessed it right.")
+    else
+      IO.puts("Sorry, that's incorrect. The correct number was #{correct}.")
+    end
   end
 end
